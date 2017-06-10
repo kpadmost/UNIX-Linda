@@ -20,7 +20,9 @@ public:
     int clientPid;
     unsigned int timeout;
     RequestType requestType; // O - output, I - input, R - read
-    int tupleNumber;
+    TupleMessage(int clientPid, unsigned int timeout = 0
+            , RequestType requestType = RequestType::INPUT);
+
     Tuple tuples;
 };
 

@@ -9,5 +9,5 @@ void CommunicationManagerFIFO::sendMessage(const TupleMessage &message) {
 }
 
 TupleMessage CommunicationManagerFIFO::receiveMessage() {
-    return TupleMessage();
+    return TupleMessage(-1, 100, RequestType::INPUT);
 }

@@ -39,3 +39,44 @@ void Server::waitForRequests() {
 void Server::addRequest(const TupleMessage &request) {
     tupleRequests.push_back(request);
 }
+
+void Server::resolveRequests() {
+    for(auto it = tupleRequests.begin(); it!= tupleRequests.end();) {
+        if(resolveRequest(*it)) {
+            auto temp = it++;
+            tupleRequests.erase(temp);
+        } else ++it;
+
+    }
+}
+
+bool Server::resolveRequest(const TupleMessage &request) {
+    switch (request.requestType) {
+
+        case OUTPUT:
+            return outputRequest(request);
+        case INPUT:
+            return inputRequest(request);
+        case READ:
+            return readRequest(request);
+    };
+    return false;
+}
+
+bool Server::outputRequest(const TupleMessage &request) {
+    tupleStorage->putTuple(request.tuples);
+    return true;
+}
+
+bool Server::inputRequest(const TupleMessage &request) {
+    Tuple tuple = tupleStorage->getTuple(request.tuples);
+    if(tupleStorage->isValidTuple(tuple)) {
+        communicationManager->sendMessage(request.clientPid, tuple);
+    }
+
+    return false;
+}
+
+bool Server::readRequest(const TupleMessage &request) {
+    return false;
+}

@@ -7,7 +7,7 @@
 #include "../shared/TupleMessage.h"
 
 int main() {
-    TupleMessage m;
+    TupleMessage m(132);
     std::cout << sizeof(m);
     return 0;
 }

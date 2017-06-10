@@ -13,6 +13,7 @@ public:
     virtual Tuple readTuple(const Tuple &tupleTemplate) const = 0;
     virtual Tuple getTuple(const Tuple &tupleTemplate) = 0;
     virtual void putTuple(const Tuple &tupleTemplate) = 0;
+    virtual bool isValidTuple(const Tuple& tuple) = 0;
 };
 typedef std::unique_ptr<ITupleManager> TupleManagerPtr;
 

@@ -10,7 +10,11 @@
 class Tuple {
 public:
     static const int MAX_TUPLES = 10;
+    const int tupleNumber;
     TupleValue tuples[MAX_TUPLES];
+
+    Tuple(const int tupleNumber = 1);
+    Tuple& operator=(const Tuple& other);
 };
 
 
