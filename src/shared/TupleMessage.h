@@ -5,6 +5,7 @@
 #ifndef UNIXLINDAFIFO_TUPLEMESSAGE_H
 #define UNIXLINDAFIFO_TUPLEMESSAGE_H
 
+#include <utility>
 #include "Tuple.h"
 
 enum RequestType {
@@ -13,9 +14,11 @@ enum RequestType {
     READ
 };
 
+// Tuple template & timeout
 class TupleMessage {
 public:
     int clientPid;
+    unsigned int timeout;
     RequestType requestType; // O - output, I - input, R - read
     int tupleNumber;
     Tuple tuples;

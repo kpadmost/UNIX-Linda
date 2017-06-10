@@ -20,7 +20,7 @@ set(SERVER_FILES src/server/main.cpp ${SHARED_FILES}
         src/server/model/interfaces/ICommunicationManager.cpp
         src/server/model/interfaces/ICommunicationManager.h
         src/server/controller/Server.cpp
-        src/server/controller/Server.h)
+        src/server/controller/Server.h src/server/model/implementation/CommunicationManagerFIFO.cpp src/server/model/implementation/CommunicationManagerFIFO.h)
 
 set(CLIENT_FILES src/client/main.cpp ${SHARED_FILES})
 add_executable(ServerProcess ${SERVER_FILES})
