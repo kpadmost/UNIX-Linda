@@ -5,9 +5,8 @@
 #ifndef UNIXLINDAFIFO_SERVER_H
 #define UNIXLINDAFIFO_SERVER_H
 
-#include "../../shared/TupleMessage.h"
-
-#include <vector>
+#include "../model/interfaces/ICommunicationManager.h"
+#include "../model/interfaces/ITupleManager.h"
 
 class Server {
 

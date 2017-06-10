@@ -5,7 +5,7 @@
 #ifndef UNIXLINDAFIFO_TUPLEMESSAGE_H
 #define UNIXLINDAFIFO_TUPLEMESSAGE_H
 
-#include "TupleSet.h"
+#include "Tuple.h"
 
 enum RequestType {
     OUTPUT,
@@ -18,7 +18,7 @@ public:
     int clientPid;
     RequestType requestType; // O - output, I - input, R - read
     int tupleNumber;
-    TupleSet tuples;
+    Tuple tuples;
 };
 
 

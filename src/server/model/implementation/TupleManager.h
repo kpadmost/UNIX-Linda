@@ -8,19 +8,19 @@
 #include <vector>
 #include <algorithm>
 
-#include "ITupleManager.h"
-#include "../../shared/Tuple.h"
+#include "../interfaces/ITupleManager.h"
+#include "../../../shared/TupleValue.h"
 
 
 class TupleManager : public ITupleManager {
 private:
-    std::vector<Tuple> tuples;
-    Tuple& findTuple(const Tuple& tupleTemplate);
+    std::vector<TupleValue> tuples;
+    TupleValue& findTuple(const TupleValue& tupleTemplate);
 public:
 
-    const Tuple & readTuple(const Tuple &tupleTemplate) const override;
+    Tuple readTuple(const Tuple &tupleTemplate) const override;
 
-    const Tuple & getTuple(const Tuple &tupleTemplate) override;
+    Tuple getTuple(const Tuple &tupleTemplate) override;
 
     void putTuple(const Tuple &tupleTemplate) override;
 };
