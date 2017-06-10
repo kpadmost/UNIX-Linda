@@ -7,9 +7,11 @@
 
 #include <limits>
 #include <cstring>
+#include "iostream"
+#include <boost/lexical_cast.hpp>
 
 enum TupleComparator {
-    MT,     // >
+    GT,     // >
     LT,     // >
     EQ,     // ==
     MEQ,    // >=

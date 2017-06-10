@@ -34,11 +34,45 @@ bool Tuple::addTupleValue(char* command, int position)
         }
         else
         {
+            if(tupleData.find(">=", 0)!=std::string::npos && tupleData.find(">=", 0)==0)
+            {
 
+            }
+            else if(tupleData.find(">", 0)!=std::string::npos && tupleData.find(">", 0)==0)
+            {
+
+            }
+            else if(tupleData.find("<=", 0)!=std::string::npos && tupleData.find("<=", 0)==0)
+            {
+
+            }
+            else if(tupleData.find("<", 0)!=std::string::npos && tupleData.find(">", 0)==0)
+            {
+
+            }
+            else if(tupleData.find("==", 0)!=std::string::npos && tupleData.find("==", 0)==0)
+            {
+                if(tupleFormat == "float")
+                    return false;
+            }
+            else
+            {
+
+            }
         }
     }
     else if(tupleFormat == "string")
     {
 
+    }
+}
+
+bool Tuple::checkSubStr(std::string substr)
+{
+    try {
+        boost::lexical_cast<int>(substr);
+        return true;
+    } catch (boost::bad_lexical_cast) {
+        return false;
     }
 }
