@@ -31,10 +31,11 @@ void Server::updateRequests(const unsigned int deltaT) {
 
 void Server::waitForRequests() {
     while (!endProcess) {
-        TupleMessage m = communicationManager->receiveMessage();
-
-        addRequest(m);
+//        TupleMessage m = communicationManager->receiveMessage();
+//        addRequest(m);
+        sleep(10);
     }
+    std::cout << "gere";
 }
 
 void Server::addRequest(const TupleMessage &request) {
@@ -81,10 +82,19 @@ bool Server::readRequest(const TupleMessage &request) {
 
 bool Server::checkAndSendTuple(const int clientId, const Tuple &tuple) {
     if(tupleStorage->isValidTuple(tuple)) {
+
         communicationManager->sendMessage(clientId, tuple);
         return true;
     }
     return false;
 }
+
+Server::Server(ICommunicationManager *communicationManager_, ITupleManager *manager_) :
+endProcess(false){
+    communicationManager = std::unique_ptr<ICommunicationManager>(communicationManager_);
+    tupleStorage = std::unique_ptr<ITupleManager>(manager_);
+}
+
+
 
 

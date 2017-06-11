@@ -7,7 +7,7 @@
 
 #include <list>
 #include <algorithm>
-
+#include <iostream>
 #include "../model/interfaces/ICommunicationManager.h"
 #include "../../shared/FifoManager.h"
 #include "../model/interfaces/ITupleManager.h"
@@ -26,16 +26,17 @@ private:
     bool outputRequest(const TupleMessage& request);
     bool inputRequest(const TupleMessage& request);
     bool readRequest(const TupleMessage& request);
-
+    void addRequest(const TupleMessage& request);
     bool checkAndSendTuple(const int clientId, const Tuple& tuple);
 
     volatile bool endProcess;
-    void addRequest(const TupleMessage& request);
+
 public:
+    void kill() { endProcess = true; }
     void updateServer(const unsigned int deltaT);
 
     void waitForRequests();
-
+    Server(ICommunicationManager* communicationManager, ITupleManager* manager);
 };
 
 

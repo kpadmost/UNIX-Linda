@@ -5,10 +5,9 @@
 #ifndef UNIXLINDAFIFO_COMMUNICATIONMANAGERFIFO_H
 #define UNIXLINDAFIFO_COMMUNICATIONMANAGERFIFO_H
 
-
+#include <iostream>
 
 #include "../interfaces/ICommunicationManager.h"
-
 #include "../../../shared/FifoManager.h"
 
 
@@ -19,6 +18,8 @@ private:
 public:
     CommunicationManagerFIFO();
     TupleMessage receiveMessage() override;
+
+    virtual ~CommunicationManagerFIFO();
 
     void sendMessage(const int clientId, const Tuple& tuple) override;
 

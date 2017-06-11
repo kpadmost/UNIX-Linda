@@ -4,10 +4,19 @@
 
 #include <iostream>
 
-#include "../shared/TupleMessage.h"
+#include "controller/Server.h"
+#include "model/implementation/TupleManager.h"
+#include "model/implementation/CommunicationManagerFIFO.h"
+
+#include <thread>
 
 int main() {
-//    TupleMessage m(213);
-//    std::cout << sizeof(m);
+    Server server = Server(new CommunicationManagerFIFO(), new TupleManager());
+    std::thread servThread(&Server::waitForRequests, &server);
+    servThread.detach();
+    char c;
+    std::cin >> c;
+
+    server.kill();
     return 0;
 }

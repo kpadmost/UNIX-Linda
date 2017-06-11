@@ -29,12 +29,14 @@ Tuple TupleManager::inputTuple(const Tuple &tupleTemplate) {
     return tuple;
 }
 
-bool TupleManager::isValidTuple(const Tuple &tuple) const {
-    return tuple.tupleNumber != 0;
-}
+
 
 void TupleManager::removeTuple(const Tuple &tupleTemplate) {
     tuples.erase(std::find(tuples.begin(), tuples.end(), tupleTemplate));
+}
+
+bool TupleManager::isValidTuple(const Tuple &tuple) const {
+    return tuple.tupleNumber != 0;
 }
 
 

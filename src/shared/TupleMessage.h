@@ -25,6 +25,7 @@ public:
             , RequestType requestType = RequestType::INPUT);
 
     Tuple tuples;
+    friend std::ostream& operator<<(std::ostream& os, const TupleMessage& value);
 };
 
 
