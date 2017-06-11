@@ -4,6 +4,7 @@
 
 #include "FifoManager.h"
 const std::string FifoManager::fifoPath = "/fifo/fifo_";
+const std::string FifoManager::SERVER_FIFO = "serv";
 void FifoManager::openFifo() {
     descriptor = mkfifo(name.c_str(), mode);
     if(descriptor <0)

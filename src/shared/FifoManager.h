@@ -24,6 +24,7 @@ private:
     std::string name; //fifo_name
     const static std::string fifoPath;
 public:
+    const static std::string SERVER_FIFO;
     FifoManager(const int pid, const mode_t mode_ = O_RDWR) :
             name(fifoPath + std::to_string(pid)), mode(mode_) {  }
     void openFifo();

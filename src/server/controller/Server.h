@@ -9,10 +9,11 @@
 #include <algorithm>
 
 #include "../model/interfaces/ICommunicationManager.h"
+#include "../../shared/FifoManager.h"
 #include "../model/interfaces/ITupleManager.h"
 class Server {
 private:
-    CommunicationManagerPtr communicationManager;
+    FifoPtr ptr;
     TupleManagerPtr tupleStorage;
     std::list<TupleMessage> tupleRequests;
 
