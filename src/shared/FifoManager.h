@@ -31,6 +31,6 @@ public:
     void readFromFIFO(TupleMessage &message);
     void writeToFifo(const TupleMessage &message);
 };
-std::unique_ptr<FifoManager> FifoPtr;
+typedef std::unique_ptr<FifoManager> FifoPtr;
 
 #endif //UNIXLINDAFIFO_FIFOMANAGER_H

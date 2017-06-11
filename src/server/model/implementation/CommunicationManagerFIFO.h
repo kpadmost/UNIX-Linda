@@ -7,7 +7,12 @@
 
 #include "../interfaces/ICommunicationManager.h"
 
+#include "../../../shared/FifoManager.h"
+
 class CommunicationManagerFIFO : public ICommunicationManager {
+private:
+    FifoPtr fifo;
+
 public:
     void sendMessage(const TupleMessage &message) override;
 
