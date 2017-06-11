@@ -15,8 +15,8 @@ TupleMessage CommunicationManagerFIFO::receiveMessage() {
     return m;
 }
 
-void CommunicationManagerFIFO::sendMessage(const int clientId, const Tuple& tuple) {
-    sendMessage(TupleMessage(clientId, tuple));
+void CommunicationManagerFIFO::sendMessage(const int clientId, const Tuple &tuple, const RequestType type) {
+    sendMessage(TupleMessage(clientId, tuple, type));
 }
 
 void CommunicationManagerFIFO::sendMessage(const TupleMessage &message) {

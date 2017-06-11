@@ -21,7 +21,7 @@ public:
 
     virtual ~CommunicationManagerFIFO();
 
-    void sendMessage(const int clientId, const Tuple& tuple) override;
+    void sendMessage(const int clientId, const Tuple &tuple, const RequestType type) override;
 
     void sendMessage(const TupleMessage &message) override;
 };

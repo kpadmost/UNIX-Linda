@@ -22,7 +22,6 @@ void FifoManager::readFromFIFO(TupleMessage &message) {
     ssize_t bytes = 0;
     if((bytes = read(descriptor, &message, sizeof(message))) < 0)
         throw std::invalid_argument("read from fifo");
-    std::cout << "\nbytes read: " << bytes << std::endl;
 
 }
 

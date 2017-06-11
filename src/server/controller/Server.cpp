@@ -74,17 +74,17 @@ bool Server::outputRequest(const TupleMessage &request) {
 
 bool Server::inputRequest(const TupleMessage &request) {
     Tuple tuple = tupleStorage->inputTuple(request.tuples);
-    return checkAndSendTuple(request.clientPid, tuple);
+    return checkAndSendTuple(request.clientPid, tuple, INPUT);
 }
 
 bool Server::readRequest(const TupleMessage &request) {
     Tuple tuple = tupleStorage->readTuple(request.tuples);
-    return checkAndSendTuple(request.clientPid, tuple);
+    return checkAndSendTuple(request.clientPid, tuple, READ);
 }
 
-bool Server::checkAndSendTuple(const int clientId, const Tuple &tuple) {
+bool Server::checkAndSendTuple(const int clientId, const Tuple &tuple, const RequestType request) {
     if(tupleStorage->isValidTuple(tuple)) {
-        communicationManager->sendMessage(clientId, tuple);
+        communicationManager->sendMessage(clientId, tuple, INPUT);
         return true;
     }
     return false;
