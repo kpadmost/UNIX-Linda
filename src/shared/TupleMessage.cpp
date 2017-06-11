@@ -16,7 +16,7 @@ std::ostream &operator<<(std::ostream &os, const TupleMessage &value) {
         case READ: requestType = "READ"; break;
     };
     os << "Tuple message to: " << value.clientPid
-       << " with request:" << value.requestType
+       << " with request:" << requestType
         << " and tuple: " << std::endl << value.tuples;
 
     return os;

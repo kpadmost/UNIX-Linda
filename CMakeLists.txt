@@ -28,6 +28,10 @@ set(SERVER_FILES src/server/main.cpp ${SHARED_FILES}
         src/server/model/implementation/CommunicationManagerFIFO.h
         )
 
-set(CLIENT_FILES src/client/main.cpp ${SHARED_FILES})
+set(CLIENT_FILES ${SHARED_FILES}
+        src/client/main.cpp
+        src/client/Client.h
+        src/client/Client.cpp
+        )
 add_executable(ServerProcess ${SERVER_FILES})
 add_executable(ClientProcess ${CLIENT_FILES})

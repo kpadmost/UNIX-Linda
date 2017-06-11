@@ -26,6 +26,7 @@ public:
 
     Tuple tuples;
     friend std::ostream& operator<<(std::ostream& os, const TupleMessage& value);
+    static bool isValidTuple(const TupleMessage& m) { return m.clientPid != INVALID_PID; }
 };
 
 
