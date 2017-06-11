@@ -16,7 +16,7 @@ void Server::removeOuttimedRequests() {
     tupleRequests.erase(std::remove_if(tupleRequests.begin()
             , tupleRequests.end(), [](TupleMessage& m) -> bool {
                 return m.timeout == 0;
-            }));
+            }), tupleRequests.end());
 }
 
 void Server::updateRequests(const unsigned int deltaT) {
@@ -31,9 +31,11 @@ void Server::updateRequests(const unsigned int deltaT) {
 
 void Server::waitForRequests() {
     while (!endProcess) {
-//        TupleMessage m = communicationManager->receiveMessage();
-//        addRequest(m);
-        sleep(10);
+        TupleMessage m = communicationManager->receiveMessage();
+        if(m.clientPid != TupleMessage::INVALID_PID)
+            addRequest(m);
+        sleep(1);
+        updateServer(1);
     }
     std::cout << "gere";
 }
@@ -82,7 +84,6 @@ bool Server::readRequest(const TupleMessage &request) {
 
 bool Server::checkAndSendTuple(const int clientId, const Tuple &tuple) {
     if(tupleStorage->isValidTuple(tuple)) {
-
         communicationManager->sendMessage(clientId, tuple);
         return true;
     }

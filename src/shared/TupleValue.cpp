@@ -8,7 +8,6 @@ bool TupleValue::operator==(const TupleValue &other) const {
     if(format != other.format)
         return false;
     switch (format) {
-
         case INT:
             return fieldComparsion(this->int_, other.int_);
         case FLOAT:

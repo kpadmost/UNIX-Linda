@@ -161,6 +161,7 @@ bool Client::addTupleValue(char* command, int position, Tuple& tuple, RequestTyp
         else
             if(!getData(string_, tupleData, tupleValue.STRING_MAX))
                 return false;
+        comparator = EQ;
     }
 
     tuple.tuples[position].comparator = comparator;
