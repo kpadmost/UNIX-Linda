@@ -14,13 +14,14 @@
 
 class TupleManager : public ITupleManager {
 private:
-    std::vector<TupleValue> tuples;
-    TupleValue& findTuple(const TupleValue& tupleTemplate);
+    std::vector<Tuple> tuples;
+    const Tuple findTuple(const Tuple& tupleTemplate) const;
+    void removeTuple(const Tuple& tupleTemplate);
 public:
-
+    bool isValidTuple(const Tuple& tuple) const;
     Tuple readTuple(const Tuple &tupleTemplate) const override;
 
-    Tuple getTuple(const Tuple &tupleTemplate) override;
+    Tuple inputTuple(const Tuple &tupleTemplate) override;
 
     void putTuple(const Tuple &tupleTemplate) override;
 };

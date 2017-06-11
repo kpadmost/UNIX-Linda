@@ -7,19 +7,31 @@
 
 #include <string>
 #include <memory>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <string.h>
+#include <stdio.h>
+#include <unistd.h>
+
+#include "TupleMessage.h"
+
 class FifoManager {
 private:
-    void openFifo(std::string name);
+
     void closeFifo();
-    int fifoDesk;
-    std::string name; //fifo_bomz
+    int descriptor;
+    const mode_t mode;
+    std::string name; //fifo_name
     const static std::string fifoPath;
 public:
-    FifoManager(const int pid) : name(fifoPath + std::to_string(pid)) {  }
+    const static int SERVER_FIFO = 0;
+    FifoManager(const int pid, const mode_t mode_ = O_RDWR) :
+            name(fifoPath + std::to_string(pid)), mode(mode_) {  }
+    void openFifo();
     ~FifoManager() { closeFifo(); }
-    void readFromFIFO();
-    void writeToFifo();
+    void readFromFIFO(TupleMessage &message);
+    void writeToFifo(const TupleMessage &message);
 };
-std::unique_ptr<FifoManager> FifoPtr;
+typedef std::unique_ptr<FifoManager> FifoPtr;
 
 #endif //UNIXLINDAFIFO_FIFOMANAGER_H

@@ -12,7 +12,7 @@ class ICommunicationManager {
 public:
 
     virtual void sendMessage(const TupleMessage& message) = 0;
-    virtual void sendMessage(const int clientId, const Tuple tuple) = 0;
+    virtual void sendMessage(const int clientId, const Tuple& tuple) = 0;
     virtual TupleMessage receiveMessage() = 0;
 };
 typedef std::unique_ptr<ICommunicationManager> CommunicationManagerPtr;

@@ -9,6 +9,7 @@
 #include <algorithm>
 
 #include "../model/interfaces/ICommunicationManager.h"
+#include "../../shared/FifoManager.h"
 #include "../model/interfaces/ITupleManager.h"
 class Server {
 private:

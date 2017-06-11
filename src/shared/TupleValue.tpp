@@ -7,7 +7,7 @@
 
 
 template<typename T>
-bool TupleValue::fieldComparsion(const T& first, const T& second) {
+bool TupleValue::fieldComparsion(const T& first, const T& second) const {
     switch (comparator) {
         case GT:
             return (std::bind(std::greater<T>(), first, second))();
@@ -19,6 +19,8 @@ bool TupleValue::fieldComparsion(const T& first, const T& second) {
             return (std::bind(std::greater_equal<T>(), first, second))();
         case LEQ:
             return (std::bind(std::less_equal<T>(), first, second))();
+        case DM:
+            return true;
     }
     return false;
 }
