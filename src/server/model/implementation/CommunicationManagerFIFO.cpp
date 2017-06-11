@@ -29,3 +29,7 @@ CommunicationManagerFIFO::CommunicationManagerFIFO() :
     fifo(std::unique_ptr<FifoManager>(new FifoManager(FifoManager::SERVER_FIFO, O_RDONLY))){
     fifo->openFifo();
 }
+
+CommunicationManagerFIFO::~CommunicationManagerFIFO() {
+    fifo->closeFifo();
+}

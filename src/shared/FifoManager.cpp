@@ -13,6 +13,7 @@ void FifoManager::openFifo() {
 void FifoManager::closeFifo() {
     if(unlink(name.c_str()) < 0)
         printf("cant close fifo %s", name.c_str());
+    printf("closed serv fifo");
 }
 
 void FifoManager::readFromFIFO(TupleMessage &message) {

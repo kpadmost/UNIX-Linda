@@ -18,7 +18,7 @@
 class FifoManager {
 private:
 
-    void closeFifo();
+
     int descriptor;
     const mode_t mode;
     std::string name; //fifo_name
@@ -28,7 +28,8 @@ public:
     FifoManager(const int pid, const mode_t mode_ = O_RDWR) :
             name(fifoPath + std::to_string(pid)), mode(mode_) {  }
     void openFifo();
-    ~FifoManager() { closeFifo(); }
+    void closeFifo();
+    ~FifoManager() {  }
     void readFromFIFO(TupleMessage &message);
     void writeToFifo(const TupleMessage &message);
 };
