@@ -232,6 +232,8 @@ void Client::readAnswer()
 {
     TupleMessage tmp;
     server->readFromFIFO(tmp);
+    if(TupleMessage::isValidTuple(tmp))
+        std::cout << "\n tuple received: " << tmp;
 
 }
 

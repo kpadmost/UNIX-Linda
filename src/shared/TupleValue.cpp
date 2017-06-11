@@ -22,15 +22,15 @@ bool TupleValue::stringComparsion(const char *first, const char *second) const {
     switch (comparator) {
 
         case GT:
-            return cmp > 0;
+            return cmp < 0;
         case EQ:
             return cmp == 0;
         case GEQ:
-            return cmp >= 0;
-        case LEQ:
             return cmp <= 0;
+        case LEQ:
+            return cmp >= 0;
         case LT:
-            return cmp < 0;
+            return cmp > 0;
         case DM:
             return true;
     }

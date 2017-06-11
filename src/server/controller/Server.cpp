@@ -22,7 +22,7 @@ void Server::removeOuttimedRequests() {
 void Server::updateRequests(const unsigned int deltaT) {
     std::for_each(std::begin(tupleRequests), std::end(tupleRequests)
             , [&](TupleMessage& m) -> void {
-                if(m.timeout - deltaT < 0)
+                if(m.timeout - deltaT <= 0)
                     m.timeout = 0;
                 else
                     m.timeout -= deltaT;
@@ -74,17 +74,17 @@ bool Server::outputRequest(const TupleMessage &request) {
 
 bool Server::inputRequest(const TupleMessage &request) {
     Tuple tuple = tupleStorage->inputTuple(request.tuples);
-    return checkAndSendTuple(request.clientPid, tuple);
+    return checkAndSendTuple(request.clientPid, tuple, INPUT);
 }
 
 bool Server::readRequest(const TupleMessage &request) {
     Tuple tuple = tupleStorage->readTuple(request.tuples);
-    return checkAndSendTuple(request.clientPid, tuple);
+    return checkAndSendTuple(request.clientPid, tuple, READ);
 }
 
-bool Server::checkAndSendTuple(const int clientId, const Tuple &tuple) {
+bool Server::checkAndSendTuple(const int clientId, const Tuple &tuple, const RequestType request) {
     if(tupleStorage->isValidTuple(tuple)) {
-        communicationManager->sendMessage(clientId, tuple);
+        communicationManager->sendMessage(clientId, tuple, INPUT);
         return true;
     }
     return false;

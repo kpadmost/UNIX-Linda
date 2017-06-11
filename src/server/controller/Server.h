@@ -27,7 +27,7 @@ private:
     bool inputRequest(const TupleMessage& request);
     bool readRequest(const TupleMessage& request);
     void addRequest(const TupleMessage& request);
-    bool checkAndSendTuple(const int clientId, const Tuple& tuple);
+    bool checkAndSendTuple(const int clientId, const Tuple &tuple, const RequestType request);
 
     volatile bool endProcess;
 
