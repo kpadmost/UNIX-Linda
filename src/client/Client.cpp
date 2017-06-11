@@ -15,7 +15,7 @@ void Client::setMessage(int pid, Tuple tuple,  unsigned int timeout, RequestType
     tupleMessage = new TupleMessage(pid, tuple, timeout, requestType);
 }
 
-bool Client::addTupleValue(char* command, int position, Tuple& tuple)
+bool Client::addTupleValue(char* command, int position, Tuple& tuple, RequestType type)
 {
     TupleValue tupleValue;
     std::string line = command;
@@ -41,8 +41,19 @@ bool Client::addTupleValue(char* command, int position, Tuple& tuple)
     else
         return false;
 
+    if(tupleData == "*")
+    {
+        if(type == OUTPUT)
+            return false;
+        tuple.tuples[position].comparator = comparator;
+        tuple.tuples[position].format = DM;
+        return true;
+    }
+
     if(tupleData.find(">=", 0)!=std::string::npos && tupleData.find(">=", 0)==0)
     {
+        if(type == OUTPUT)
+            return false;
         if(tupleFormat == "float")
         {
             if(!getData(float_, tupleData.substr(2)))
@@ -60,6 +71,8 @@ bool Client::addTupleValue(char* command, int position, Tuple& tuple)
     }
     else if(tupleData.find(">", 0)!=std::string::npos && tupleData.find(">", 0)==0)
     {
+        if(type == OUTPUT)
+            return false;
         if(tupleFormat == "float")
         {
             if(!getData(float_, tupleData.substr(1)))
@@ -77,6 +90,8 @@ bool Client::addTupleValue(char* command, int position, Tuple& tuple)
     }
     else if(tupleData.find("<=", 0)!=std::string::npos && tupleData.find("<=", 0)==0)
     {
+        if(type == OUTPUT)
+            return false;
         if(tupleFormat == "float")
         {
             if(!getData(float_, tupleData.substr(2)))
@@ -94,6 +109,8 @@ bool Client::addTupleValue(char* command, int position, Tuple& tuple)
     }
     else if(tupleData.find("<", 0)!=std::string::npos && tupleData.find(">", 0)==0)
     {
+        if(type == OUTPUT)
+            return false;
         if(tupleFormat == "float")
         {
             if(!getData(float_, tupleData.substr(1)))
@@ -111,6 +128,8 @@ bool Client::addTupleValue(char* command, int position, Tuple& tuple)
     }
     else if(tupleData.find("==", 0)!=std::string::npos && tupleData.find("==", 0)==0)
     {
+        if(type == OUTPUT)
+            return false;
         if(tupleFormat == "float")
             return false;
         else

@@ -11,7 +11,7 @@ class Client
 {
 public:
     Client();
-    bool addTupleValue(char*, int, Tuple&);
+    bool addTupleValue(char*, int, Tuple&, RequestType);
     bool getData(std::string&, std::string, int);
     bool getData(int&, std::string);
     bool getData(float&, std::string);

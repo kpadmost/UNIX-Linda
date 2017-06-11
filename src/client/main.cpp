@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
     int timeout = atoi(argv[2]);
     for(int i = 3; i < argc; i++)
     {
-        if(!client.addTupleValue(argv[i], i-3, tuple))
+        if(!client.addTupleValue(argv[i], i-3, tuple, type))
         {
             std::cout<<"Problem with "<<i<<" argument"<<std::endl;
             return -1;
