@@ -7,14 +7,14 @@
 int main(int argc, char* argv[])
 {
     Tuple tuple(argc-3);
-    Client client;
+    int pid = getpid();
+    Client client(pid);
     RequestType type;
     if(argc<4 || argc>3+tuple.MAX_TUPLES)
     {
         std::cout<<"Invalid number of arguments"<<std::endl;
         return -1;
     }
-    int pid = getpid();
     char* requestType = argv[1];
     if(std::string(requestType) == "output")
         type = OUTPUT;
@@ -38,8 +38,27 @@ int main(int argc, char* argv[])
     }
 
     client.setMessage(pid, tuple, timeout, type);
-    std::cout<<client.getMessage()->tuples.tuples[0].string_<<std::endl;
-    std::cout<<client.getMessage()->tuples.tuples[1].string_<<std::endl;
-    std::cout<<client.getMessage()->tuples.tuples[2].string_<<std::endl;
+
+    client.openServerFifo();
+
+    client.writeCommand();
+
+    client.closeServerFifo();
+
+    if(type == INPUT || type == READ)
+    {
+        client.openClientFifo();
+        client.readAnswer();
+    }
+    client.closeClientFifo();
+
+    //std::cout<<client.getMessage()->tuples.tuples[0].int_<<std::endl;
+
+    //std::cout<<client.getMessage()->tuples.tuples[1].float_<<std::endl;
+
+    //std::cout<<client.getMessage()->tuples.tuples[2].string_<<std::endl;
+
+
+
     return 0;
 }

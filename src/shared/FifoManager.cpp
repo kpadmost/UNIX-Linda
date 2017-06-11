@@ -21,14 +21,14 @@ void FifoManager::closeFifo() {
 void FifoManager::readFromFIFO(TupleMessage &message) {
     ssize_t bytes = 0;
     if((bytes = read(descriptor, &message, sizeof(message))) < 0)
-        throw std::invalid_argument("bla");
+        throw std::invalid_argument("read from fifo");
 
 }
 
 void FifoManager::writeToFifo(const TupleMessage &message) {
     size_t messageSize = sizeof(message);
     if(write(descriptor, &message, messageSize) != messageSize)
-        throw std::invalid_argument("bla");
+        throw std::invalid_argument("write to fifo");
 }
 
 void FifoManager::createFifo() {

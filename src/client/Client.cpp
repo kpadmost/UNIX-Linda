@@ -45,8 +45,8 @@ bool Client::addTupleValue(char* command, int position, Tuple& tuple, RequestTyp
     {
         if(type == OUTPUT)
             return false;
-        tuple.tuples[position].comparator = comparator;
-        tuple.tuples[position].format = DM;
+        tuple.tuples[position].comparator = DM;
+        tuple.tuples[position].format = format;
         return true;
     }
 
@@ -165,7 +165,18 @@ bool Client::addTupleValue(char* command, int position, Tuple& tuple, RequestTyp
 
     tuple.tuples[position].comparator = comparator;
     tuple.tuples[position].format = format;
-    strcpy(tuple.tuples[position].string_, string_.c_str());
+    if(tupleFormat == "float")
+    {
+        tuple.tuples[position].float_ = float_;
+    }
+    else if(tupleFormat == "int")
+    {
+        tuple.tuples[position].int_ = int_;
+    }
+    else
+    {
+        strcpy(tuple.tuples[position].string_, string_.c_str());
+    }
     return true;
 }
 
@@ -198,4 +209,36 @@ bool Client::getData(float& float_, std::string substr)
     } catch (boost::bad_lexical_cast) {
         return false;
     }
+}
+
+void Client::openServerFifo()
+{
+    server = new FifoManager(FifoManager::SERVER_FIFO, false, O_WRONLY);
+    server->openFifo();
+}
+
+void Client::writeCommand()
+{
+    server->writeToFifo(*tupleMessage);
+}
+
+void Client::readAnswer()
+{
+    server->readFromFIFO(*tupleMessage);
+}
+
+void Client::openClientFifo()
+{
+    client = new FifoManager(pid, true, O_RDONLY);
+    client->openFifo();
+}
+
+void Client::closeClientFifo()
+{
+    client->closeFifo();
+}
+
+void Client::closeServerFifo()
+{
+    server->closeFifo();
 }
