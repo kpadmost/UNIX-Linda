@@ -5,10 +5,11 @@
 #include "Server.h"
 
 void Server::updateServer(const unsigned int deltaT) {
+    resolveRequests();
+
     updateRequests(deltaT);
 
     removeOuttimedRequests();
-
 }
 
 void Server::removeOuttimedRequests() {
@@ -70,13 +71,20 @@ bool Server::outputRequest(const TupleMessage &request) {
 
 bool Server::inputRequest(const TupleMessage &request) {
     Tuple tuple = tupleStorage->getTuple(request.tuples);
-    if(tupleStorage->isValidTuple(tuple)) {
-        communicationManager->sendMessage(request.clientPid, tuple);
-    }
-
-    return false;
+    return checkAndSendTuple(request.clientPid, tuple);
 }
 
 bool Server::readRequest(const TupleMessage &request) {
+    Tuple tuple = tupleStorage->readTuple(request.tuples);
+    return checkAndSendTuple(request.clientPid, tuple);
+}
+
+bool Server::checkAndSendTuple(const int clientId, const Tuple &tuple) {
+    if(tupleStorage->isValidTuple(tuple)) {
+        communicationManager->sendMessage(clientId, tuple);
+        return true;
+    }
     return false;
 }
+
+

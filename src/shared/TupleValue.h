@@ -7,14 +7,12 @@
 
 #include <limits>
 #include <cstring>
-#include "iostream"
-#include <boost/lexical_cast.hpp>
 
 enum TupleComparator {
     GT,     // >
     LT,     // >
     EQ,     // ==
-    MEQ,    // >=
+    GEQ,    // >=
     LEQ     // <=
 };
 
@@ -25,6 +23,12 @@ enum TupleFormat {
 };
 
 class TupleValue {
+private:
+    bool stringComparsion(const char* first, const char* second);
+    template<typename T>
+        bool fieldComparsion(const T& first, const T& second);
+
+
 public:
     static const int STRING_MAX = 20;
     union {
@@ -38,6 +42,7 @@ public:
     TupleComparator comparator;
 };
 
+#include "TupleValue.tpp"
 
 
 #endif //UNIXLINDAFIFO_TUPLE_H

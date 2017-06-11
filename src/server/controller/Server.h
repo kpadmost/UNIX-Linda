@@ -19,12 +19,14 @@ private:
 
     void removeOuttimedRequests();
     void updateRequests(const unsigned int deltaT);
-
     void resolveRequests();
+
     bool resolveRequest(const TupleMessage& request);
     bool outputRequest(const TupleMessage& request);
     bool inputRequest(const TupleMessage& request);
     bool readRequest(const TupleMessage& request);
+
+    bool checkAndSendTuple(const int clientId, const Tuple& tuple);
 
     volatile bool endProcess;
     void addRequest(const TupleMessage& request);

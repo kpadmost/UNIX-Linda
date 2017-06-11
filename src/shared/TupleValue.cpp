@@ -10,10 +10,28 @@ bool TupleValue::operator==(const TupleValue &other) {
     switch (format) {
 
         case INT:
-            return int_ == other.int_;
+            return fieldComparsion(this->int_, other.int_);
         case FLOAT:
-            return (float_ - other.float_ < std::numeric_limits<float>::epsilon());
+            return fieldComparsion(this->float_, other.float_);
         case STRING:
-            return strcmp(string_, other.string_) >= 0;
+            return stringComparsion(this->string_, other.string_);
     };
+}
+
+bool TupleValue::stringComparsion(const char *first, const char *second) {
+    const int cmp = strcmp(first, second);
+    switch (comparator) {
+
+        case GT:
+            return cmp > 0;
+        case EQ:
+            return cmp == 0;
+        case GEQ:
+            return cmp >= 0;
+        case LEQ:
+            return cmp <= 0;
+        case LT:
+            return cmp < 0;
+    }
+    return false;
 }

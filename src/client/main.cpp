@@ -7,6 +7,7 @@
 int main(int argc, char* argv[])
 {
     Tuple tuple;
+    Client client;
     if(argc<4 || argc>3+tuple.MAX_TUPLES)
     {
         errno = ENOEXEC;

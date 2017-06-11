@@ -15,8 +15,6 @@ public:
 
     Tuple(const int tupleNumber = 1);
     Tuple& operator=(const Tuple& other);
-    bool addTupleValue(char*, int);
-    bool checkSubStr(std::string);
 };
 
 
