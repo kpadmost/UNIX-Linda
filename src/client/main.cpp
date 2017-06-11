@@ -42,12 +42,15 @@ int main(int argc, char* argv[])
 
     client.writeCommand();
 
+    std::cout<<"Successfuly write to fifo"<<std::endl;
+
     client.closeServerFifo();
 
     if(type == INPUT || type == READ)
     {
         client.openClientFifo();
         client.readAnswer();
+        std::cout<<"Successfuly read to fifo"<<std::endl;
         client.closeClientFifo();
     }
 
