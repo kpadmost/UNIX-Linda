@@ -150,7 +150,12 @@ bool Client::addTupleValue(char* command, int position, Tuple& tuple, RequestTyp
     {
         if(tupleFormat == "float")
         {
-            //if(!getData(float_, tupleData))
+            if(type == OUTPUT)
+            {
+                if(!getData(float_, tupleData))
+                    return false;
+            }
+            else
                 return false;
         }
         else if(tupleFormat == "int")
