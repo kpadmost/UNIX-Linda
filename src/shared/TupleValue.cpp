@@ -5,7 +5,7 @@
 
 #include "TupleValue.h"
 
-bool TupleValue::operator==(const TupleValue &other) {
+bool TupleValue::operator==(const TupleValue &other) const {
     if(format != other.format)
         return false;
     switch (format) {
@@ -19,7 +19,7 @@ bool TupleValue::operator==(const TupleValue &other) {
     };
 }
 
-bool TupleValue::stringComparsion(const char *first, const char *second) {
+bool TupleValue::stringComparsion(const char *first, const char *second) const {
     const int cmp = strcmp(first, second);
     switch (comparator) {
 

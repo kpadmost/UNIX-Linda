@@ -25,9 +25,9 @@ enum TupleFormat {
 
 class TupleValue {
 private:
-    bool stringComparsion(const char* first, const char* second);
+    bool stringComparsion(const char* first, const char* second) const;
     template<typename T>
-        bool fieldComparsion(const T& first, const T& second);
+        bool fieldComparsion(const T& first, const T& second) const;
 
 
 public:
@@ -38,7 +38,7 @@ public:
         char string_[STRING_MAX];
     };
     TupleFormat format;
-    bool operator==(const TupleValue& other);
+    bool operator==(const TupleValue& other) const;
     // only for comparsion sake
     TupleComparator comparator;
 };

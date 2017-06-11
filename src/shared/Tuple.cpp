@@ -19,4 +19,11 @@ Tuple &Tuple::operator=(const Tuple& other)  {
 
 }
 
+bool Tuple::operator==(const Tuple &other) const {
+    for(int i = 0; i < tupleNumber; ++i)
+        if(!(tuples[i] == other.tuples[i]))
+            return false;
+    return true;
+}
+
 

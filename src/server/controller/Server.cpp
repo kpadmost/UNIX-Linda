@@ -70,7 +70,7 @@ bool Server::outputRequest(const TupleMessage &request) {
 }
 
 bool Server::inputRequest(const TupleMessage &request) {
-    Tuple tuple = tupleStorage->getTuple(request.tuples);
+    Tuple tuple = tupleStorage->inputTuple(request.tuples);
     return checkAndSendTuple(request.clientPid, tuple);
 }
 

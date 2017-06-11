@@ -15,6 +15,7 @@ public:
 
     Tuple(const int tupleNumber = 1);
     Tuple& operator=(const Tuple& other);
+    bool operator==(const Tuple& other) const;
 };
 
 

@@ -6,22 +6,35 @@
 
 
 
-void TupleManager::putTuple(const Tuple &tupleTemplate) {
-
+void TupleManager::putTuple(const Tuple &tuple) {
+    tuples.push_back(tuple);
 }
 
-TupleValue &TupleManager::findTuple(const TupleValue &tupleTemplate) {
-    return *std::find(tuples.begin(), tuples.end(), tupleTemplate);
+const Tuple TupleManager::findTuple(const Tuple &tupleTemplate) const {
+    auto tupleIterator = std::find(tuples.begin(), tuples.end(), tupleTemplate);
+    if(tupleIterator != tuples.end())
+        return *tupleIterator;
+    else
+        return Tuple();
 }
 
 Tuple TupleManager::readTuple(const Tuple &tupleTemplate) const {
-    Tuple t;
-    return t;
+    return findTuple(tupleTemplate);
 }
 
-Tuple TupleManager::getTuple(const Tuple &tupleTemplate) {
-    Tuple t;
-    return t;
+Tuple TupleManager::inputTuple(const Tuple &tupleTemplate) {
+    const Tuple& tuple = readTuple(tupleTemplate);
+    if(isValidTuple(tuple))
+        removeTuple(tupleTemplate);
+    return tuple;
+}
+
+bool TupleManager::isValidTuple(const Tuple &tuple) const {
+    return tuple.tupleNumber != 0;
+}
+
+void TupleManager::removeTuple(const Tuple &tupleTemplate) {
+    tuples.erase(std::find(tuples.begin(), tuples.end(), tupleTemplate));
 }
 
 
