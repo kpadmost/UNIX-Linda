@@ -5,8 +5,8 @@
 #include <unistd.h>
 #include "iostream"
 #include <boost/lexical_cast.hpp>
-#include "src/shared/TupleMessage.h"
-#include "src/shared/FifoManager.h"
+#include "../shared/TupleMessage.h"
+#include "../shared/FifoManager.h"
 
 class Client
 {

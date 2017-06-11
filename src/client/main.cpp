@@ -2,7 +2,6 @@
 // Created by konstantin on 05.06.17.
 //
 #include "Client.h"
-#include "src/shared/TupleMessage.h"
 
 int main(int argc, char* argv[])
 {
@@ -49,8 +48,9 @@ int main(int argc, char* argv[])
     {
         client.openClientFifo();
         client.readAnswer();
+        client.closeClientFifo();
     }
-    client.closeClientFifo();
+
 
     //std::cout<<client.getMessage()->tuples.tuples[0].int_<<std::endl;
 
