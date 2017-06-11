@@ -10,7 +10,8 @@ set(SHARED_FILES
         src/shared/Tuple.h
         src/shared/TupleMessage.h
         src/shared/TupleMessage.cpp
-        )
+        src/shared/TupleValue.tpp
+        src/shared/FifoManager.cpp src/shared/FifoManager.h)
 
 set(SERVER_FILES src/server/main.cpp ${SHARED_FILES}
         src/server/model/interfaces/ITupleManager.cpp
@@ -20,7 +21,10 @@ set(SERVER_FILES src/server/main.cpp ${SHARED_FILES}
         src/server/model/interfaces/ICommunicationManager.cpp
         src/server/model/interfaces/ICommunicationManager.h
         src/server/controller/Server.cpp
-        src/server/controller/Server.h src/server/model/implementation/CommunicationManagerFIFO.cpp src/server/model/implementation/CommunicationManagerFIFO.h)
+        src/server/controller/Server.h
+        src/server/model/implementation/CommunicationManagerFIFO.cpp
+        src/server/model/implementation/CommunicationManagerFIFO.h
+        )
 
 set(CLIENT_FILES src/client/main.cpp ${SHARED_FILES})
 add_executable(ServerProcess ${SERVER_FILES})
