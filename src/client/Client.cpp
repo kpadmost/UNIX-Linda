@@ -226,23 +226,31 @@ void Client::openServerFifo()
 void Client::writeCommand()
 {
     server->writeToFifo(*tupleMessage);
-    start = std::chrono::system_clock::now().time_since_epoch()/std::chrono::seconds(1);
+    start = std::clock();
 }
 
-void Client::readAnswer(int timeout)
+bool Client::readAnswer(int timeout)
 {
     TupleMessage tmp;
     do
     {
         client->readFromFIFO(tmp);
-    } while(std::chrono::system_clock::now().time_since_epoch()/std::chrono::seconds(1)-start > timeout);
+    } while((std::clock()-start)/ CLOCKS_PER_SEC < timeout);
     if(TupleMessage::isValidTuple(tmp))
+    {
         std::cout << "\n tuple received: " << tmp;
+        return true;
+    }
+    else
+    {
+        std::cout<<"Timeout"<<std::endl;
+        return false;
+    }
 }
 
 void Client::openClientFifo()
 {
-    client = new FifoManager(pid, true, O_RDONLY);
+    client = new FifoManager(pid, true, O_RDONLY | O_NONBLOCK);
     client->openFifo();
 }
 
