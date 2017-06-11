@@ -22,7 +22,7 @@ void Server::removeOuttimedRequests() {
 void Server::updateRequests(const unsigned int deltaT) {
     std::for_each(std::begin(tupleRequests), std::end(tupleRequests)
             , [&](TupleMessage& m) -> void {
-                if(m.timeout - deltaT < 0)
+                if(m.timeout - deltaT <= 0)
                     m.timeout = 0;
                 else
                     m.timeout -= deltaT;

@@ -19,7 +19,6 @@ bool Client::addTupleValue(char* command, int position, Tuple& tuple, RequestTyp
 {
     TupleValue tupleValue;
     std::string line = command;
-    std::cout << "\n" << command << std::endl;
     std::string delimiter = ":";
     std::string tupleFormat;
     std::string tupleData;
@@ -151,7 +150,7 @@ bool Client::addTupleValue(char* command, int position, Tuple& tuple, RequestTyp
     {
         if(tupleFormat == "float")
         {
-            if(!getData(float_, tupleData))
+            //if(!getData(float_, tupleData))
                 return false;
         }
         else if(tupleFormat == "int")
