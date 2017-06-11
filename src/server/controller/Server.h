@@ -13,7 +13,7 @@
 #include "../model/interfaces/ITupleManager.h"
 class Server {
 private:
-    FifoPtr ptr;
+    CommunicationManagerPtr communicationManager;
     TupleManagerPtr tupleStorage;
     std::list<TupleMessage> tupleRequests;
 

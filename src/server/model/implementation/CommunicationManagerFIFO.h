@@ -14,9 +14,12 @@ private:
     FifoPtr fifo;
 
 public:
-    void sendMessage(const TupleMessage &message) override;
 
     TupleMessage receiveMessage() override;
+
+    void sendMessage(const int clientId, const Tuple tuple) override;
+
+    void sendMessage(const TupleMessage &message) override;
 };
 
 

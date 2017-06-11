@@ -17,10 +17,11 @@ enum RequestType {
 // Tuple template & timeout
 class TupleMessage {
 public:
+    const static int INVALID_PID = -1;
     int clientPid;
     unsigned int timeout;
     RequestType requestType; // O - output, I - input, R - read
-    TupleMessage(int clientPid, unsigned int timeout = 0
+    TupleMessage(int clientPid = INVALID_PID, Tuple tuples = Tuple(),  unsigned int timeout = 0
             , RequestType requestType = RequestType::INPUT);
 
     Tuple tuples;

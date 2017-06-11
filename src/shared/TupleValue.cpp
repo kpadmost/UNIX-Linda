@@ -33,6 +33,8 @@ bool TupleValue::stringComparsion(const char *first, const char *second) {
             return cmp <= 0;
         case LT:
             return cmp < 0;
+        case DM:
+            return true;
     }
     return false;
 }

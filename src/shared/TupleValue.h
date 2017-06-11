@@ -13,7 +13,8 @@ enum TupleComparator {
     LT,     // >
     EQ,     // ==
     GEQ,    // >=
-    LEQ     // <=
+    LEQ,     // <=
+    DM      // *
 };
 
 enum TupleFormat {
