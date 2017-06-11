@@ -5,18 +5,28 @@ Client::Client()
 
 }
 
-bool Client::addTupleValue(char* command, int position)
+TupleMessage* Client::getMessage()
+{
+    return tupleMessage;
+}
+
+void Client::setMessage(int pid, Tuple tuple,  unsigned int timeout, RequestType requestType)
+{
+    tupleMessage = new TupleMessage(pid, tuple, timeout, requestType);
+}
+
+bool Client::addTupleValue(char* command, int position, Tuple& tuple)
 {
     TupleValue tupleValue;
     std::string line = command;
     std::string delimiter = ":";
     std::string tupleFormat;
     std::string tupleData;
+    TupleFormat format;
+    TupleComparator comparator;
     int int_;
     float float_;
     std::string string_;
-    TupleFormat format;
-    TupleComparator comparator;
 
 
     tupleFormat = line.substr(0, line.find(delimiter));
@@ -134,15 +144,14 @@ bool Client::addTupleValue(char* command, int position)
                 return false;
     }
 
-
-
+    tuple.tuples[position].comparator = comparator;
+    tuple.tuples[position].format = format;
+    strcpy(tuple.tuples[position].string_, string_.c_str());
     return true;
 }
 
 bool Client::getData(std::string& string_, std::string substr, int max)
 {
-    substr.erase(0, 1);
-    substr.erase(substr.length()-1, 1);
     if(substr.length()>(unsigned int) max)
         return false;
     else

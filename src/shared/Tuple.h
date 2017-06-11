@@ -15,10 +15,7 @@ public:
 
     Tuple(const int tupleNumber = 1);
     Tuple& operator=(const Tuple& other);
-<<<<<<< HEAD
-=======
     bool operator==(const Tuple& other) const;
->>>>>>> 28576b3752c934aac542fae6d42435b941b8b104
 };
 
 

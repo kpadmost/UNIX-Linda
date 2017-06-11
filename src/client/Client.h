@@ -11,11 +11,14 @@ class Client
 {
 public:
     Client();
-    bool addTupleValue(char*, int);
+    bool addTupleValue(char*, int, Tuple&);
     bool getData(std::string&, std::string, int);
     bool getData(int&, std::string);
     bool getData(float&, std::string);
-    TupleMessage* message;
+    TupleMessage* getMessage();
+    void setMessage(int, Tuple, unsigned int, RequestType);
+private:
+    TupleMessage* tupleMessage;
 };
 
 #endif // CLIENT_H
