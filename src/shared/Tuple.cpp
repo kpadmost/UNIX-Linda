@@ -25,5 +25,3 @@ bool Tuple::operator==(const Tuple &other) const {
             return false;
     return true;
 }
-
-
