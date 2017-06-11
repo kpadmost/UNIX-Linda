@@ -235,22 +235,19 @@ bool Client::readAnswer(int timeout)
     do
     {
         client->readFromFIFO(tmp);
+        if(TupleMessage::isValidTuple(tmp))
+        {
+            std::cout << "\n tuple received: " << tmp;
+            return true;
+        }
     } while((std::clock()-start)/ CLOCKS_PER_SEC < timeout);
-    if(TupleMessage::isValidTuple(tmp))
-    {
-        std::cout << "\n tuple received: " << tmp;
-        return true;
-    }
-    else
-    {
-        std::cout<<"Timeout"<<std::endl;
-        return false;
-    }
+    std::cout<<"Timeout"<<std::endl;
+    return false;
 }
 
 void Client::openClientFifo()
 {
-    client = new FifoManager(pid, true, O_RDONLY | O_NONBLOCK);
+    client = new FifoManager(pid, true, O_RDONLY|O_NONBLOCK);
     client->openFifo();
 }
 

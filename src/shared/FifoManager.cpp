@@ -20,9 +20,8 @@ void FifoManager::closeFifo() {
 
 void FifoManager::readFromFIFO(TupleMessage &message) {
     ssize_t bytes = 0;
-    if((bytes = read(descriptor, &message, sizeof(message))) < 0)
-        throw std::invalid_argument("read from fifo");
-
+    bytes = read(descriptor, &message, sizeof(message));
+        //throw std::invalid_argument("read from fifo");
 }
 
 void FifoManager::writeToFifo(const TupleMessage &message) {
@@ -40,7 +39,7 @@ void FifoManager::createFifo() {
 void FifoManager::destroyFifo() {
     if(unlink(name.c_str()) < 0)
         printf("cant close fifo %s", name.c_str());
-    printf("closed serv fifo");
+    printf("closed serv fifo\n");
 }
 
 

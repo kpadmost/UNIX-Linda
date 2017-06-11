@@ -1,0 +1,3 @@
+all:
+	g++ -std=c++11 -o server main.cpp controller/Server.cpp controller/Server.h model/implementation/TupleManager.cpp model/implementation/TupleManager.h model/implementation/CommunicationManagerFIFO.h model/implementation/CommunicationManagerFIFO.cpp model/interfaces/ITupleManager.cpp model/interfaces/ITupleManager.h model/interfaces/ICommunicationManager.cpp model/interfaces/ICommunicationManager.h ../shared/FifoManager.cpp ../shared/FifoManager.h ../shared/Tuple.cpp ../shared/Tuple.h ../shared/TupleMessage.cpp ../shared/TupleMessage.h ../shared/TupleValue.cpp ../shared/TupleValue.h -pthread
+
