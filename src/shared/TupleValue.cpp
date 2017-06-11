@@ -37,3 +37,19 @@ bool TupleValue::stringComparsion(const char *first, const char *second) const {
     }
     return false;
 }
+
+std::ostream &operator<<(std::ostream &os, const TupleValue &val) {
+    switch (val.format) {
+        case INT:
+            os << val.int_;
+            break;
+        case FLOAT:
+            os << val.float_;
+            break;
+        case STRING:
+            os << val.string_;
+            break;
+    };
+
+    return os;
+}

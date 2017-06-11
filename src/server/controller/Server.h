@@ -7,7 +7,7 @@
 
 #include <list>
 #include <algorithm>
-
+#include <iostream>
 #include "../model/interfaces/ICommunicationManager.h"
 #include "../../shared/FifoManager.h"
 #include "../model/interfaces/ITupleManager.h"

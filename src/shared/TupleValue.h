@@ -7,7 +7,7 @@
 
 #include <limits>
 #include <cstring>
-
+#include <ostream>
 enum TupleComparator {
     GT,     // >
     LT,     // >
@@ -39,6 +39,7 @@ public:
     };
     TupleFormat format;
     bool operator==(const TupleValue& other) const;
+    friend std::ostream& operator<<(std::ostream& os, const TupleValue& val);
     // only for comparsion sake
     TupleComparator comparator;
 };

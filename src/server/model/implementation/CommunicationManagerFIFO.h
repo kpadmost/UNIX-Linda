@@ -5,10 +5,9 @@
 #ifndef UNIXLINDAFIFO_COMMUNICATIONMANAGERFIFO_H
 #define UNIXLINDAFIFO_COMMUNICATIONMANAGERFIFO_H
 
-
+#include <iostream>
 
 #include "../interfaces/ICommunicationManager.h"
-
 #include "../../../shared/FifoManager.h"
 
 

@@ -5,6 +5,7 @@
 #ifndef UNIXLINDAFIFO_TUPLESET_H
 #define UNIXLINDAFIFO_TUPLESET_H
 
+
 #include "TupleValue.h"
 
 class Tuple {
@@ -13,12 +14,11 @@ public:
     const int tupleNumber;
     TupleValue tuples[MAX_TUPLES];
 
-    Tuple(const int tupleNumber = 1);
+    Tuple(const int tupleNumber = 0);
     Tuple& operator=(const Tuple& other);
-<<<<<<< HEAD
-=======
+
     bool operator==(const Tuple& other) const;
->>>>>>> 28576b3752c934aac542fae6d42435b941b8b104
+    friend std::ostream& operator<<(std::ostream& os, const Tuple& other);
 };
 
 

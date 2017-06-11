@@ -25,3 +25,9 @@ bool Tuple::operator==(const Tuple &other) const {
             return false;
     return true;
 }
+
+std::ostream &operator<<(std::ostream& os, const Tuple &val) {
+    for(int i = 0; i < val.tupleNumber; ++i)
+        os << i << ") " << val.tuples[i] << std::endl;
+    return os;
+}

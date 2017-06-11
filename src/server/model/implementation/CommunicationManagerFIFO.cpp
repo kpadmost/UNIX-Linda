@@ -2,6 +2,7 @@
 // Created by konstantin on 10.06.17.
 //
 
+
 #include "CommunicationManagerFIFO.h"
 
 
@@ -9,6 +10,7 @@
 TupleMessage CommunicationManagerFIFO::receiveMessage() {
     TupleMessage m;
     fifo->readFromFIFO(m);
+    std::cout << "\nmessage received " << m << std::endl;
     return m;
 }
 
@@ -19,6 +21,7 @@ void CommunicationManagerFIFO::sendMessage(const int clientId, const Tuple& tupl
 void CommunicationManagerFIFO::sendMessage(const TupleMessage &message) {
     FifoManager clientFifo(message.clientPid, O_WRONLY);
     clientFifo.openFifo();
+    std::cout << "message sent: " << message << std::endl;
     clientFifo.writeToFifo(message);
 }
 
