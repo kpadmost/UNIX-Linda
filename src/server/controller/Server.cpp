@@ -32,8 +32,8 @@ void Server::updateRequests(const unsigned int deltaT) {
 void Server::waitForRequests() {
     while (!endProcess) {
         TupleMessage m = communicationManager->receiveMessage();
-
         addRequest(m);
+        sleep(10);
     }
 }
 
@@ -86,5 +86,13 @@ bool Server::checkAndSendTuple(const int clientId, const Tuple &tuple) {
     }
     return false;
 }
+
+Server::Server(ICommunicationManager *communicationManager_, ITupleManager *manager_) :
+endProcess(false){
+    communicationManager = std::unique_ptr<ICommunicationManager>(communicationManager_);
+    tupleStorage = std::unique_ptr<ITupleManager>(manager_);
+}
+
+
 
 

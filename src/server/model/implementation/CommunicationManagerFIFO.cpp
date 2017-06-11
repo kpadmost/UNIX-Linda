@@ -13,12 +13,13 @@ TupleMessage CommunicationManagerFIFO::receiveMessage() {
 }
 
 void CommunicationManagerFIFO::sendMessage(const int clientId, const Tuple& tuple) {
-    TupleMessage m(clientId, tuple);
-    fifo->writeToFifo(m);
+    sendMessage(TupleMessage(clientId, tuple));
 }
 
 void CommunicationManagerFIFO::sendMessage(const TupleMessage &message) {
-    fifo->writeToFifo(message);
+    FifoManager clientFifo(message.clientPid, O_WRONLY);
+    clientFifo.openFifo();
+    clientFifo.writeToFifo(message);
 }
 
 CommunicationManagerFIFO::CommunicationManagerFIFO() :
