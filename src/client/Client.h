@@ -7,6 +7,7 @@
 #include <boost/lexical_cast.hpp>
 #include "../shared/TupleMessage.h"
 #include "../shared/FifoManager.h"
+#include <chrono>
 
 class Client
 {
@@ -22,7 +23,7 @@ public:
     void openServerFifo();
     void closeServerFifo();
     void writeCommand();
-    void readAnswer();
+    void readAnswer(int);
     void openClientFifo();
     void closeClientFifo();
 private:
@@ -30,6 +31,7 @@ private:
     FifoManager* server;
     FifoManager* client;
     int pid;
+    long start;
 };
 
 #endif // CLIENT_H

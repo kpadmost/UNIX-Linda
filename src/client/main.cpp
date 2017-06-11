@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
     if(type == INPUT || type == READ)
     {
         client.openClientFifo();
-        client.readAnswer();
+        client.readAnswer(timeout);
         std::cout<<"Successfuly read to fifo"<<std::endl;
         client.closeClientFifo();
     }
