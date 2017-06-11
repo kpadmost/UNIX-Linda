@@ -5,15 +5,17 @@
 #include "FifoManager.h"
 const std::string FifoManager::fifoPath = "/tmp/fifo/fifo_";
 void FifoManager::openFifo() {
-    descriptor = mkfifo(name.c_str(), mode);
-    if(descriptor <0)
-        throw std::invalid_argument("cant open fifo");
+    if(isOwner)
+        createFifo();
+    else
+        descriptor = open(name.c_str(), mode);
 }
 
 void FifoManager::closeFifo() {
-    if(unlink(name.c_str()) < 0)
-        printf("cant close fifo %s", name.c_str());
-    printf("closed serv fifo");
+    close(descriptor);
+    if(isOwner)
+        destroyFifo();
+
 }
 
 void FifoManager::readFromFIFO(TupleMessage &message) {
@@ -27,6 +29,18 @@ void FifoManager::writeToFifo(const TupleMessage &message) {
     size_t messageSize = sizeof(message);
     if(write(descriptor, &message, messageSize) != messageSize)
         throw std::invalid_argument("bla");
+}
+
+void FifoManager::createFifo() {
+    descriptor = mkfifo(name.c_str(), mode);
+    if(descriptor <0)
+        throw std::invalid_argument("cant create fifo");
+}
+
+void FifoManager::destroyFifo() {
+    if(unlink(name.c_str()) < 0)
+        printf("cant close fifo %s", name.c_str());
+    printf("closed serv fifo");
 }
 
 

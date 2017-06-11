@@ -26,7 +26,7 @@ void CommunicationManagerFIFO::sendMessage(const TupleMessage &message) {
 }
 
 CommunicationManagerFIFO::CommunicationManagerFIFO() :
-    fifo(std::unique_ptr<FifoManager>(new FifoManager(FifoManager::SERVER_FIFO, O_RDONLY))){
+    fifo(std::unique_ptr<FifoManager>(new FifoManager(FifoManager::SERVER_FIFO, true, O_RDONLY))){
     fifo->openFifo();
 }
 

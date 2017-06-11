@@ -15,6 +15,7 @@
 
 #include "TupleMessage.h"
 
+
 class FifoManager {
 private:
 
@@ -23,10 +24,13 @@ private:
     const mode_t mode;
     std::string name; //fifo_name
     const static std::string fifoPath;
+    const bool isOwner;
+    void destroyFifo();
+    void createFifo();
 public:
     const static int SERVER_FIFO = 0;
-    FifoManager(const int pid, const mode_t mode_ = O_RDWR) :
-            name(fifoPath + std::to_string(pid)), mode(mode_) {  }
+    FifoManager(const int pid, const bool isOwner_ = false, const mode_t mode_ = O_RDWR) :
+            name(fifoPath + std::to_string(pid)), mode(mode_), isOwner(isOwner_) {  }
     void openFifo();
     void closeFifo();
     ~FifoManager() {  }

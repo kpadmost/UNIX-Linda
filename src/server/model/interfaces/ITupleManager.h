@@ -14,6 +14,7 @@ public:
     virtual Tuple inputTuple(const Tuple &tupleTemplate) = 0;
     virtual void putTuple(const Tuple &tupleTemplate) = 0;
     virtual bool isValidTuple(const Tuple& tuple) const = 0;
+    virtual ~ITupleManager() { }
 };
 typedef std::unique_ptr<ITupleManager> TupleManagerPtr;
 
