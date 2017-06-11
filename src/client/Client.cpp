@@ -107,7 +107,7 @@ bool Client::addTupleValue(char* command, int position, Tuple& tuple, RequestTyp
                 return false;
         comparator = LEQ;
     }
-    else if(tupleData.find("<", 0)!=std::string::npos && tupleData.find(">", 0)==0)
+    else if(tupleData.find("<", 0)!=std::string::npos && tupleData.find("<", 0)==0)
     {
         if(type == OUTPUT)
             return false;
@@ -150,7 +150,7 @@ bool Client::addTupleValue(char* command, int position, Tuple& tuple, RequestTyp
     {
         if(tupleFormat == "float")
         {
-            if(!getData(float_, tupleData))
+            //if(!getData(float_, tupleData))
                 return false;
         }
         else if(tupleFormat == "int")
@@ -226,7 +226,7 @@ void Client::writeCommand()
 void Client::readAnswer()
 {
     TupleMessage tmp;
-    server->readFromFIFO(&tmp);
+    server->readFromFIFO(tmp);
 
 }
 
