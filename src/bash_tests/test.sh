@@ -1,0 +1,440 @@
+#!/bin/bash
+
+mkdir logs
+cd logs
+echo >> log_client.txt
+echo >> log_server.txt
+clear
+cd ..
+cd ..
+direct=$(pwd)
+echo $direct
+(
+sleep 2
+echo "sleep done"
+cd /
+cd "$direct"/client
+echo "Starting client tests"
+echo
+
+# timeout test
+echo "Timeout test(will take some time obv):"
+echo "(reading from empty seevrer, expeting timeout)"
+./client read 5 int:* > "$direct"/bash_tests/logs/log_client.txt;
+i=0
+result="SUCCESS"
+while read -r line
+do
+echo "Output: $line"
+	if [ "$line" == "Successfuly write to fifo" ]; then
+		if [ "$i" != "0" ]; then
+			result="FAIL"
+		fi
+	else if [ "$line" == "Timeout" ]; then
+		if [ "$i" != "00" ]; then
+			result="FAIL"
+		fi
+	else if [ "$line" == "closed serv fifo" ]; then
+		if [ "$i" != "000" ]; then
+			result="FAIL"
+		fi
+	else
+		result="FAIL"
+	fi
+	fi
+	fi
+i+=0
+done < "$direct"/bash_tests/logs/log_client.txt
+echo "~~~~~~~~~~~~~~~~~~~~"
+echo $result
+echo "~~~~~~~~~~~~~~~~~~~~"
+echo
+
+# output int tests
+result="SUCCESS"
+echo
+echo "Output INT test: "
+echo "(outputting int:10, expectiong success)"
+echo
+
+./client output 10 int:10 > "$direct"/bash_tests/logs/log_client.txt;
+while read -r line
+do
+cmLine="Successfuly write to fifo"
+	echo "Output: $line"
+	if [ "$line" != "$cmLine" ]; then
+		result="FAIL"
+	fi
+done < "$direct"/bash_tests/logs/log_client.txt
+echo "~~~~~~~~~~~~~~~~~~~~"
+echo $result
+echo "~~~~~~~~~~~~~~~~~~~~"
+echo
+
+
+# output float tests
+result="SUCCESS"
+echo
+echo "Output FLOAT test: "
+echo "(outputting float:10.5, expectiong success)"
+echo
+
+./client output 10 float:10.5 > "$direct"/bash_tests/logs/log_client.txt;
+while read -r line
+do
+cmLine="Successfuly write to fifo"
+	echo "Output: $line"
+	if [ "$line" != "$cmLine" ]; then
+		result="FAIL"
+	fi
+done < "$direct"/bash_tests/logs/log_client.txt
+echo "~~~~~~~~~~~~~~~~~~~~"
+echo $result
+echo "~~~~~~~~~~~~~~~~~~~~"
+echo
+
+
+# output string tests
+result="SUCCESS"
+echo
+echo "Output STRING test: "
+echo "(outputting string:kek, expectiong success)"
+echo
+#for i in {0..5}
+#do
+./client output 10 string:kek > "$direct"/bash_tests/logs/log_client.txt;
+while read -r line
+do
+cmLine="Successfuly write to fifo"
+	echo "Output: $line"
+	if [ "$line" != "$cmLine" ]; then
+		result="FAIL"
+	fi
+done < "$direct"/bash_tests/logs/log_client.txt
+echo "~~~~~~~~~~~~~~~~~~~~"
+echo $result
+echo "~~~~~~~~~~~~~~~~~~~~"
+echo
+#done
+
+# output combined tests
+result="SUCCESS"
+echo
+echo "Output COMBINED tests: "
+echo "(outputting int:100 float:100.55 string:kek, expectiong success)"
+echo
+
+./client output 10 int:100 float:100.55 string:kek > "$direct"/bash_tests/logs/log_client.txt;
+while read -r line
+do
+cmLine="Successfuly write to fifo"
+	echo "Output: $line"
+	if [ "$line" != "$cmLine" ]; then
+		result="FAIL"
+	fi
+done < "$direct"/bash_tests/logs/log_client.txt
+echo "~~~~~~~~~~~~~~~~~~~~"
+echo $result
+echo "~~~~~~~~~~~~~~~~~~~~"
+echo
+
+# read tests
+result="SUCCESS"
+echo
+echo "READ tests: "
+echo "(reading int:*, expectiong success, returned 10)"
+echo
+
+./client read 10 int:* > "$direct"/bash_tests/logs/log_client.txt;
+i=0
+while read -r line
+do
+echo "Output: $line"
+	if [ "$line" == "Successfuly write to fifo" ]; then
+		if [ "$i" != "0" ]; then
+			result="FAIL1"
+		fi
+	else if [ "$line" == "" ]; then
+		if [ "$i" != "00" ]; then
+			result="FAIL2"
+		fi
+	else if [ "$line" == "0) 10 comp: 2" ]; then
+		if [ "$i" != "0000" ]; then
+			result="FAIL4"
+		fi
+	else if [ "$line" == "Successfuly read to fifo" ]; then
+		if [ "$i" != "00000" ]; then
+			result="FAIL6"
+		fi
+	else if [ "$line" == "closed serv fifo" ]; then
+		if [ "$i" != "000000" ]; then
+			result="FAIL"
+		fi
+	else if [ "$i" != "000" ]; then
+		result="FAIL"
+	fi
+	fi
+	fi
+	fi
+	fi
+	fi
+i+=0
+done < "$direct"/bash_tests/logs/log_client.txt
+echo "~~~~~~~~~~~~~~~~~~~~"
+echo $result
+echo "~~~~~~~~~~~~~~~~~~~~"
+echo
+
+# read operators tests
+result="SUCCESS"
+echo
+echo "OPERATOR tests: "
+echo "(reading int:{>0, >=0, == 10, <1000, <=1000}, expectiong success, returned 10 in all cases)"
+echo
+
+./client read 10 int:\>0 > "$direct"/bash_tests/logs/log_client.txt;
+./client read 10 int:\>=0 >> "$direct"/bash_tests/logs/log_client.txt;
+./client read 10 int:==10 >> "$direct"/bash_tests/logs/log_client.txt;
+./client read 10 int:\<1000 >> "$direct"/bash_tests/logs/log_client.txt;
+./client read 10 int:\<=1000 >> "$direct"/bash_tests/logs/log_client.txt;
+i=0
+while read -r line
+do
+echo "Output: $line"
+	if [ "$line" == "Successfuly write to fifo" ]; then
+		if [ "$i" != "0" ]; then
+			result="FAIL1"
+		fi
+	else if [ "$line" == "" ]; then
+		if [ "$i" != "00" ]; then
+			result="FAIL2"
+		fi
+	else if [ "$line" == "0) 10 comp: 2" ]; then
+		if [ "$i" != "0000" ]; then
+			result="FAIL4"
+		fi
+	else if [ "$line" == "Successfuly read to fifo" ]; then
+		if [ "$i" != "00000" ]; then
+			result="FAIL6"
+		fi
+	else if [ "$line" == "closed serv fifo" ]; then
+		if [ "$i" != "000000" ]; then
+			result="FAIL"
+		fi
+	else if [ "$i" != "000" ]; then
+		result="FAIL"
+	fi
+	fi
+	fi
+	fi
+	fi
+	fi
+i+=0
+if [ "$i" == "0000000" ]; then
+	i=0
+	echo "~~~~~~~~~~~~~~~~~~~~"
+	echo $result
+	echo "~~~~~~~~~~~~~~~~~~~~"
+	result="SUCCESS"		
+fi
+
+done < "$direct"/bash_tests/logs/log_client.txt
+echo
+
+# input tests
+result="SUCCESS"
+echo
+echo "INPUT tests: "
+echo "(inputting int:*, expectiong success, returned 10, then inputting again, expecting timeout(no int left), then again, but inserting an int 5 sec after(to test if qued requests are still considered))"
+echo
+
+./client input 10 int:* > "$direct"/bash_tests/logs/log_client.txt;
+i=0
+while read -r line
+do
+echo "Output: $line"
+	if [ "$line" == "Successfuly write to fifo" ]; then
+		if [ "$i" != "0" ]; then
+			result="FAIL1"
+		fi
+	else if [ "$line" == "" ]; then
+		if [ "$i" != "00" ]; then
+			result="FAIL2"
+		fi
+	else if [ "$line" == "0) 10 comp: 2" ]; then
+		if [ "$i" != "0000" ]; then
+			result="FAIL4"
+		fi
+	else if [ "$line" == "Successfuly read to fifo" ]; then
+		if [ "$i" != "00000" ]; then
+			result="FAIL6"
+		fi
+	else if [ "$line" == "closed serv fifo" ]; then
+		if [ "$i" != "000000" ]; then
+			result="FAIL"
+		fi
+	else if [ "$i" != "000" ]; then
+		result="FAIL"
+	fi
+	fi
+	fi
+	fi
+	fi
+	fi
+i+=0
+done < "$direct"/bash_tests/logs/log_client.txt
+#part 2
+echo
+./client input 10 int:* > "$direct"/bash_tests/logs/log_client.txt;
+i=0
+while read -r line
+do
+echo "Output: $line"
+	if [ "$line" == "Successfuly write to fifo" ]; then
+		if [ "$i" != "0" ]; then
+			result="FAIL1"
+		fi
+	else if [ "$line" == "Timeout" ]; then
+		if [ "$i" != "00" ]; then
+			result="FAIL2"
+		fi
+	else if [ "$line" == "closed serv fifo" ]; then
+		if [ "$i" != "000" ]; then
+			result="FAIL"
+		fi
+	fi
+	fi
+	fi
+
+i+=0
+done < "$direct"/bash_tests/logs/log_client.txt
+#part 3
+(
+echo
+result="SUCCESS"
+./client input 10 int:* > "$direct"/bash_tests/logs/log_client.txt;
+i=0
+while read -r line
+do
+echo "Output: $line"
+	if [ "$line" == "Successfuly write to fifo" ]; then
+		if [ "$i" != "0" ]; then
+			result="FAIL1"
+		fi
+	else if [ "$line" == "" ]; then
+		if [ "$i" != "00" ]; then
+			result="FAIL2"
+		fi
+	else if [ "$line" == "0) 10 comp: 2" ]; then
+		if [ "$i" != "0000" ]; then
+			result="FAIL4"
+		fi
+	else if [ "$line" == "Successfuly read to fifo" ]; then
+		if [ "$i" != "00000" ]; then
+			result="FAIL6"
+		fi
+	else if [ "$line" == "closed serv fifo" ]; then
+		if [ "$i" != "000000" ]; then
+			result="FAIL"
+		fi
+	else if [ "$i" != "000" ]; then
+		result="FAIL"
+	fi
+	fi
+	fi
+	fi
+	fi
+	fi
+i+=0
+done < "$direct"/bash_tests/logs/log_client.txt
+echo "~~~~~~~~~~~~~~~~~~~~"
+echo $result
+echo "~~~~~~~~~~~~~~~~~~~~"
+) &
+./client output 10 int:10 > k
+
+wait
+
+echo "~~~~~~~~~~~~~~~~~~~~"
+echo $result
+echo "~~~~~~~~~~~~~~~~~~~~"
+echo
+
+# multiple clients tests
+
+echo
+echo "MULTIPLE CLIENTS tests: "
+echo "(starting 5 clients making 10 requests read string:* each, expecting success and returned kek)"
+echo
+#start for 5 diff clients
+for l in {0..4}
+do
+(
+#start of 10 iterations
+result="SUCCESS"
+for k in {0..9}
+do
+
+./client read 10 string:* > "$direct"/bash_tests/logs/log_client.txt;
+
+i=0
+while read -r line
+do
+#echo "Output: $line"
+	if [ "$line" == "Successfuly write to fifo" ]; then
+		if [ "$i" != "0" ]; then
+			result="FAIL1"
+		fi
+	else if [ "$line" == "" ]; then
+		if [ "$i" != "00" ]; then
+			result="FAIL2"
+		fi
+	else if [ "$line" == "0) kek comp: 2" ]; then
+		if [ "$i" != "0000" ]; then
+			result="FAIL4"
+		fi
+	else if [ "$line" == "Successfuly read to fifo" ]; then
+		if [ "$i" != "00000" ]; then
+			result="FAIL6"
+		fi
+	else if [ "$line" == "closed serv fifo" ]; then
+		if [ "$i" != "000000" ]; then
+			result="FAIL"
+		fi
+	else if [ "$i" != "000" ]; then
+		result="FAIL"
+	fi
+	fi
+	fi
+	fi
+	fi
+	fi
+i+=0
+done < "$direct"/bash_tests/logs/log_client.txt
+#end of 10 iterations
+done
+echo "~~~~~~~~~~~~~~~~~~~~"
+echo "Client: $l $result"
+echo "~~~~~~~~~~~~~~~~~~~~"
+echo
+) &
+#end of 5 clients
+done
+wait
+
+echo "Testing is over, press any button."
+) &
+
+
+
+
+cd /tmp
+rm -r fifo
+mkdir fifo
+cd /
+cd "$direct"/server
+echo "Server"
+./server > "$direct"/bash_tests/logs/log_server.txt
+echo server close
+
+wait

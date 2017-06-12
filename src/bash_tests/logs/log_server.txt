@@ -1,0 +1,437 @@
+
+message received Tuple message to: 7775 with request:READ and tuple: 
+0) 32767 comp: 5
+
+
+message received Tuple message to: 7777 with request:OUTPUT and tuple: 
+0) 10 comp: 2
+
+
+message received Tuple message to: 7778 with request:OUTPUT and tuple: 
+0) 10.5 comp: 2
+
+
+message received Tuple message to: 7779 with request:OUTPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7780 with request:OUTPUT and tuple: 
+0) 100 comp: 2
+1) 100.55 comp: 2
+2) kek comp: 2
+
+
+message received Tuple message to: 7781 with request:READ and tuple: 
+0) 32767 comp: 5
+
+message sent: Tuple message to: 7781 with request:INPUT and tuple: 
+0) 10 comp: 2
+
+
+message received Tuple message to: 7782 with request:READ and tuple: 
+0) 0 comp: 0
+
+message sent: Tuple message to: 7782 with request:INPUT and tuple: 
+0) 10 comp: 2
+
+
+message received Tuple message to: 7783 with request:READ and tuple: 
+0) 0 comp: 3
+
+message sent: Tuple message to: 7783 with request:INPUT and tuple: 
+0) 10 comp: 2
+
+
+message received Tuple message to: 7784 with request:READ and tuple: 
+0) 10 comp: 2
+
+message sent: Tuple message to: 7784 with request:INPUT and tuple: 
+0) 10 comp: 2
+
+
+message received Tuple message to: 7785 with request:READ and tuple: 
+0) 1000 comp: 1
+
+message sent: Tuple message to: 7785 with request:INPUT and tuple: 
+0) 10 comp: 2
+
+
+message received Tuple message to: 7786 with request:READ and tuple: 
+0) 1000 comp: 4
+
+message sent: Tuple message to: 7786 with request:INPUT and tuple: 
+0) 10 comp: 2
+
+
+message received Tuple message to: 7787 with request:INPUT and tuple: 
+0) 32767 comp: 5
+
+message sent: Tuple message to: 7787 with request:INPUT and tuple: 
+0) 10 comp: 2
+
+
+message received Tuple message to: 7788 with request:INPUT and tuple: 
+0) 32767 comp: 5
+
+
+message received Tuple message to: 7791 with request:INPUT and tuple: 
+0) 32767 comp: 5
+
+
+message received Tuple message to: 7790 with request:OUTPUT and tuple: 
+0) 10 comp: 2
+
+message sent: Tuple message to: 7791 with request:INPUT and tuple: 
+0) 10 comp: 2
+
+
+message received Tuple message to: 7795 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7795 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7797 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7797 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7800 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7800 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7799 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7799 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7801 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7801 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7802 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7802 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7803 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7803 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7804 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7804 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7805 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7805 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7806 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7806 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7807 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7807 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7808 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7808 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7809 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7809 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7810 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7810 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7811 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7811 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7812 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7812 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7813 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7813 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7814 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7814 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7815 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7815 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7816 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7816 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7817 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7817 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7818 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7818 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7819 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7819 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7820 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7820 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7821 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7821 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7822 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7822 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7823 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7823 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7824 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7824 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7825 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7825 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7827 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7827 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7828 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7828 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7829 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7829 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7830 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7830 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7832 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7832 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7833 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7833 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7834 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7834 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7835 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7835 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7836 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7836 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7837 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7837 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7838 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7838 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7839 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7839 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7840 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7840 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7841 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7841 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7842 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7842 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7843 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7843 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7844 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7844 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7845 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7845 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7846 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7846 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7847 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7847 with request:INPUT and tuple: 
+0) kek comp: 2
+
+
+message received Tuple message to: 7848 with request:READ and tuple: 
+0) ÿ comp: 5
+
+message sent: Tuple message to: 7848 with request:INPUT and tuple: 
+0) kek comp: 2
+
+closed serv fifo

@@ -1,0 +1,6 @@
+Successfuly write to fifo
+
+ tuple received: Tuple message to: 7848 with request:INPUT and tuple: 
+0) kek comp: 2
+Successfuly read to fifo
+closed serv fifo
